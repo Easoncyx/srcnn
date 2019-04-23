@@ -26,7 +26,7 @@ We have implemented [SRCNN], [FSRCNN] and [ESPCN] in [Keras] with [TensorFlow] b
 ## Installation
 
 A Python package `toolbox` is developed to facilitate our experiments. You need to install it to reproduce our experiments. If the dependencies as defined in [env-gpu.yml](install/env-gpu.yml) or [env-cpu.yml](install/env-cpu.yml) are already satisfied, simply do
- 
+
 ```bash
 pip install -e .
 ```
@@ -41,7 +41,11 @@ or
 
 ```bash
 conda env create -f install/env-cpu.yml
+conda install cudatoolkit
+conda install cudnn
 ```
+
+
 
 We have also provided scripts to make it easy to set up an environment on a vanilla Ubuntu machine. Simply do
 
