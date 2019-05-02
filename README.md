@@ -1,28 +1,3 @@
-#### Update on 2018-10-07
-
-Just find that fast.ai now has a fantastic [lecture on super resolution](http://course18.fast.ai/lessons/lesson14.html). Check it out!
-
-#### Update on 2018-03-30
-
-This 2-week course project got more visitors than we expected. Although we have since moved on to other things, with no intention to improve this work, we felt obliged to list some useful resources here for whoever stumbles on this page:
-
-- [huangzehao/Super-Resolution.Benckmark](https://github.com/huangzehao/Super-Resolution.Benckmark)
-- [IvoryCandy/super-resolution](https://github.com/IvoryCandy/super-resolution)
-- [LoSealL/VideoSuperResolution](https://github.com/LoSealL/VideoSuperResolution)
-- [YapengTian/Single-Image-Super-Resolution](https://github.com/YapengTian/Single-Image-Super-Resolution)
-
-What follows is the original README:
-
-# Convolutional Neural Networks for Single Image Super-Resolution
-
-We have implemented [SRCNN], [FSRCNN] and [ESPCN] in [Keras] with [TensorFlow] backend. The network architectures are implemented in [models.py](toolbox/models.py) and [layers.py](toolbox/layers.py). Our results are described in our [final report](https://github.com/qobilidop/srcnn/releases/download/final/final-report.pdf). The [experiments data](https://github.com/qobilidop/srcnn/releases/download/final/experiments-data.zip) used to get our results are also provided. To reduce the file size, weights files at each epoch are not included in the data file. But the final model file is included and there are enough data to reproduce all the plots in our final report.
-
-[SRCNN]: https://arxiv.org/abs/1501.00092
-[FSRCNN]: https://arxiv.org/abs/1608.00367
-[ESPCN]: https://arxiv.org/abs/1609.05158
-[Keras]: https://github.com/fchollet/keras
-[TensorFlow]: https://github.com/tensorflow/tensorflow
-
 ## Installation
 
 A Python package `toolbox` is developed to facilitate our experiments. You need to install it to reproduce our experiments. If the dependencies as defined in [env-gpu.yml](install/env-gpu.yml) or [env-cpu.yml](install/env-cpu.yml) are already satisfied, simply do
@@ -82,12 +57,3 @@ Once some experiments are finished, diagnostic plots can be made by
 ```bash
 python plot.py
 ```
-
-## Authors
-
-The Deep Glasses Team :eyeglasses:
-* [Zhe An](https://github.com/JasonAn)
-* [Bili Dong](https://github.com/qobilidop)
-* [Zheng Fang](https://github.com/Catus61)
-* [Jiacong Li](https://github.com/jiacong1990)
-* [Liyang Xiong](https://github.com/xiongliyang219)
