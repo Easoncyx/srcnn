@@ -90,3 +90,4 @@ ENV/
 
 
 experiments/history
+experiments/*-sc*
