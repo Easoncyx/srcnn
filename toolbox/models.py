@@ -14,6 +14,18 @@ def bicubic(x, scale=3):
     model.add(ImageRescale(scale, method=tf.image.ResizeMethod.BICUBIC))
     return model
 
+def srcnn_backend(x, f=[9, 1, 5], n=[64, 32], scale=2):
+    assert len(f) == len(n) + 1
+    model = Sequential()
+    model.add(InputLayer(input_shape=x.shape[-3:]))
+    c = x.shape[-1]
+    for ni, fi in zip(n, f):
+        model.add(Conv2D(ni, fi, padding='same',
+                         kernel_initializer='he_normal', activation='relu'))
+    model.add(Conv2D(c, f[-1], padding='same',
+                     kernel_initializer='he_normal'))
+    return model
+
 
 def srcnn(x, f=[9, 1, 5], n=[64, 32], scale=3):
     """Build an SRCNN model.

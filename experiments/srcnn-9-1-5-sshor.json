@@ -1,0 +1,24 @@
+{
+  "save_dir": "srcnn-9-1-5-sshor",
+  "model": {
+    "name": "srcnn_backend",
+    "params": {"f": [9, 1, 5],  "n": [64, 32]}
+  },
+  "scale": 2,
+  "train_set": {
+    "input_set": "BSDS500_blur_split/img/input",
+    "label_set": "BSDS500_blur_split/img/label_hor"
+  },
+  "val_set": "Set5",
+  "test_sets": ["Set5", "Set14"],
+  "lr_sub_size": 33,
+  "lr_sub_stride": 15,
+  "epochs": 500,
+  "optimizer": {
+    "name": "adam",
+    "params": {
+      "lr": 1e-5,
+      "decay": 1e-5
+    }
+  }
+}

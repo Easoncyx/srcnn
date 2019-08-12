@@ -3,7 +3,7 @@ from functools import partial
 import numpy as np
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import load_img
-
+from pathlib import Path
 from toolbox.image import bicubic_rescale
 from toolbox.image import modcrop
 from toolbox.paths import data_dir
@@ -27,6 +27,31 @@ def load_set(name, lr_sub_size=11, lr_sub_stride=5, scale=3):
     y = np.stack(hr_sub_arrays)
     return x, y
 
+def load_set_same_size(train_set, lr_sub_size=33, lr_sub_stride=15, scale=2):
+    input_dir = data_dir / Path(train_set['input_set'])
+    label_dir = data_dir / Path(train_set['label_set'])
+    sub_size=lr_sub_size
+    sub_stride=lr_sub_stride
+
+    gen_sub = partial(generate_sub_images, size=sub_size,
+                         stride=sub_stride)
+
+    lr_sub_arrays = []
+    hr_sub_arrays = []
+
+    for i in range(1,400):
+        inputFileName = "img{}_00_recon.bmp".format(str(i))
+        modelHorFileName = "img{}_03.bmp".format(str(i))
+        inputImage = load_img(input_dir / inputFileName)
+        labelImage = load_img(label_dir / modelHorFileName)
+
+        lr_sub_arrays += [img_to_array(img) for img in gen_sub(inputImage)]
+        hr_sub_arrays += [img_to_array(img) for img in gen_sub(labelImage)]
+
+    x = np.stack(lr_sub_arrays)
+    y = np.stack(hr_sub_arrays)
+
+    return x, y
 
 def load_image_pair(path, scale=3):
     image = load_img(path)

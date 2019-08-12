@@ -88,7 +88,9 @@ class Experiment(object):
               resume=True):
         # Load and process data
         x_train, y_train = self.load_set(train_set)
-        x_val, y_val = self.load_set(val_set)
+
+        x_val, y_val = x_train[:1000], y_train[:1000]
+        # x_val, y_val = self.load_set(val_set)
         x_train, x_val = [self.pre_process(x)
                           for x in [x_train, x_val]]
         y_train, y_val = [self.inverse_post_process(y)
